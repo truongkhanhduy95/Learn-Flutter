@@ -16,13 +16,12 @@ final ThemeData kDefaultTheme = new ThemeData(
 );
 
 class FriendlychatApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Friendly Chat',
-      theme: defaultTargetPlatform == TargetPlatform.iOS         //new
-        ? kIOSTheme                                              //new
+      theme: defaultTargetPlatform == TargetPlatform.iOS
+        ? kIOSTheme 
         : kDefaultTheme, 
       home: new ChatScreen(),
     );
