@@ -68,30 +68,7 @@ List<Card> _buildGridCards(BuildContext context) {
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
-    // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("SHRINE"),
-        brightness: Brightness.dark,
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            print('Menu button');
-          },
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search, semanticLabel: 'search'),
-            onPressed: (){ print('search button');},
-          ),
-          IconButton(
-            icon: Icon(Icons.tune, semanticLabel: 'filter'),
-            onPressed: (){print('filter button');}
-          )
-        ],
-      ),
-      body: AsymmetricView(products: ProductsRepository.loadProducts(Category.all)),
-    );
+    return AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
   }
 }

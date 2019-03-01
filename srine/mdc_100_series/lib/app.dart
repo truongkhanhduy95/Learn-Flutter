@@ -14,9 +14,11 @@
 
 import 'package:flutter/material.dart';
 
+import 'backdrop.dart'; 
 import 'home.dart';
 import 'login.dart';
 import 'colors.dart';
+import 'model/product.dart';
 import 'supplemental/cut_corners_border.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
@@ -26,8 +28,16 @@ class ShrineApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shrine',
-      // TODO: Change home: to a Backdrop with a HomePage frontLayer (104)
-      home: HomePage(),
+       home: Backdrop(
+        // TODO: Make currentCategory field take _currentCategory (104)
+        currentCategory: Category.all,
+        // TODO: Pass _currentCategory for frontLayer (104)
+        frontLayer: HomePage(),
+        // TODO: Change backLayer field value to CategoryMenuPage (104)
+        backLayer: Container(color: kShrinePink100),
+        frontTitle: Text('SHRINE'),
+        backTitle: Text('MENU'),
+      ),
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
       // TODO: Change backLayer field value to CategoryMenuPage (104)
@@ -53,26 +63,28 @@ class ShrineApp extends StatelessWidget {
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
 ThemeData _buildShrineTheme() {
-  final ThemeData base = ThemeData.dark();
+  final ThemeData base =ThemeData.light();
   return base.copyWith(
-    accentColor: kShrineAltDarkGrey,
-    primaryColor: kShrineAltDarkGrey,
+    accentColor: kShrineBrown900,
+    primaryColor: kShrinePink100,
     buttonTheme: base.buttonTheme.copyWith(
-      buttonColor: kShrineAltYellow,
+      buttonColor: kShrinePink100,
       textTheme: ButtonTextTheme.normal,
     ),
-    scaffoldBackgroundColor: kShrineAltDarkGrey,
-    cardColor: kShrineAltDarkGrey,
+    scaffoldBackgroundColor: kShrineBackgroundWhite,
+    cardColor: kShrineBackgroundWhite,
     textSelectionColor: kShrinePink100,
     errorColor: kShrineErrorRed,
+
     textTheme: _buildShrineTextTheme(base.textTheme),
     primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
     accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
+    
     primaryIconTheme: base.iconTheme.copyWith(
-      color: kShrineAltYellow
+      color: kShrineBrown900
     ),
     inputDecorationTheme: InputDecorationTheme(
-      border: CutCornersBorder(),
+      border: OutlineInputBorder(),
     ),
   );
 }
@@ -83,7 +95,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
       fontWeight: FontWeight.w500,
     ),
     title: base.title.copyWith(
-      fontSize: 18.0
+        fontSize: 18.0
     ),
     caption: base.caption.copyWith(
       fontWeight: FontWeight.w400,
@@ -91,7 +103,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
     ),
   ).apply(
     fontFamily: 'Rubik',
-    displayColor: kShrineSurfaceWhite,
-    bodyColor: kShrineSurfaceWhite,
+    displayColor: kShrineBrown900,
+    bodyColor: kShrineBrown900,
   );
 }
