@@ -7,12 +7,14 @@ import 'model/product.dart';
 import 'supplemental/asymmetric_view.dart';
 
 class HomePage extends StatelessWidget {
+  final Category category;
+  const HomePage({this.category: Category.all});
 
-List<Card> _buildGridCards(BuildContext context) {
-  List<Product> products = ProductsRepository.loadProducts(Category.all);
+  List<Card> _buildGridCards(BuildContext context) {
+    List<Product> products = ProductsRepository.loadProducts(Category.all);
 
-  if (products == null || products.isEmpty) {
-    return const <Card>[];
+    if (products == null || products.isEmpty) {
+      return const <Card>[];
   }
 
   final ThemeData theme = Theme.of(context);
@@ -65,10 +67,8 @@ List<Card> _buildGridCards(BuildContext context) {
   }).toList();
 }
 
-  // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
-    // TODO: Pass Category variable to AsymmetricView (104)
-    return AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
+    return AsymmetricView(products: ProductsRepository.loadProducts(category));
   }
 }
