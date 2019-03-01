@@ -73,6 +73,7 @@ List<Card> _buildGridCards(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("SHRINE"),
+        brightness: Brightness.dark,
         leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {

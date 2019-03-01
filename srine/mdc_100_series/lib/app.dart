@@ -53,25 +53,23 @@ class ShrineApp extends StatelessWidget {
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
 ThemeData _buildShrineTheme() {
-  final ThemeData base =ThemeData.light();
+  final ThemeData base = ThemeData.dark();
   return base.copyWith(
-    accentColor: kShrineBrown900,
-    primaryColor: kShrinePink100,
+    accentColor: kShrineAltDarkGrey,
+    primaryColor: kShrineAltDarkGrey,
     buttonTheme: base.buttonTheme.copyWith(
-      buttonColor: kShrinePink100,
+      buttonColor: kShrineAltYellow,
       textTheme: ButtonTextTheme.normal,
     ),
-    scaffoldBackgroundColor: kShrineBackgroundWhite,
-    cardColor: kShrineBackgroundWhite,
+    scaffoldBackgroundColor: kShrineAltDarkGrey,
+    cardColor: kShrineAltDarkGrey,
     textSelectionColor: kShrinePink100,
     errorColor: kShrineErrorRed,
-
     textTheme: _buildShrineTextTheme(base.textTheme),
     primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
     accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
-    
     primaryIconTheme: base.iconTheme.copyWith(
-      color: kShrineBrown900
+      color: kShrineAltYellow
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: CutCornersBorder(),
@@ -85,7 +83,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
       fontWeight: FontWeight.w500,
     ),
     title: base.title.copyWith(
-        fontSize: 18.0
+      fontSize: 18.0
     ),
     caption: base.caption.copyWith(
       fontWeight: FontWeight.w400,
@@ -93,7 +91,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
     ),
   ).apply(
     fontFamily: 'Rubik',
-    displayColor: kShrineBrown900,
-    bodyColor: kShrineBrown900,
+    displayColor: kShrineSurfaceWhite,
+    bodyColor: kShrineSurfaceWhite,
   );
 }
