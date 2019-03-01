@@ -7,34 +7,60 @@ import 'model/product.dart';
 
 class HomePage extends StatelessWidget {
 
-List<Card> _buildGridCards(int count) {
-  List<Card> cards = List.generate(
-    count,
-    (int index) => Card(
+List<Card> _buildGridCards(BuildContext context) {
+  List<Product> products = ProductsRepository.loadProducts(Category.all);
+
+  if (products == null || products.isEmpty) {
+    return const <Card>[];
+  }
+
+  final ThemeData theme = Theme.of(context);
+  final NumberFormat formatter = NumberFormat.simpleCurrency(
+      locale: Localizations.localeOf(context).toString());
+
+  return products.map((product) {
+    return Card(
       clipBehavior: Clip.antiAlias,
+      // TODO: Adjust card heights (103)
       child: Column(
+        // TODO: Center items on the card (103)
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           AspectRatio(
-            aspectRatio: 18.0 / 11.0,
-            child: Image.asset('assets/diamond.png'),
+            aspectRatio: 18 / 11,
+            child: Image.asset(
+              product.assetName,
+              package: product.assetPackage,
+             // TODO: Adjust the box size (102)
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Title'),
-                SizedBox(height: 8.0),
-                Text('Secondary Text'),
-              ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+              child: Column(
+               // TODO: Align labels to the bottom and center (103)
+               crossAxisAlignment: CrossAxisAlignment.start,
+                // TODO: Change innermost Column (103)
+                children: <Widget>[
+                 // TODO: Handle overflowing labels (103)
+                 Text(
+                    product.name,
+                    style: theme.textTheme.title,
+                    maxLines: 1,
+                  ),
+                  SizedBox(height: 8.0),
+                  Text(
+                    formatter.format(product.price),
+                    style: theme.textTheme.body2,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
       ),
-    ),
-  );
-  return cards;
+    );
+  }).toList();
 }
 
   // TODO: Add a variable for Category (104)
@@ -66,7 +92,7 @@ List<Card> _buildGridCards(int count) {
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
         childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(10)
+        children: _buildGridCards(context)
       ),
     );
   }
