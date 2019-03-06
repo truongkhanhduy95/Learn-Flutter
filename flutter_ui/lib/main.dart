@@ -34,6 +34,7 @@ class _MainPageState extends State<MainPage> {
           _buildHeader(),
           _buildProfileRow(),
           _buildBottomPart(),
+          _buildTimeLine()
         ],
       ),
     );
@@ -150,6 +151,18 @@ class _MainPageState extends State<MainPage> {
           )
         ],
       )
+    );
+  }
+
+  Widget _buildTimeLine() {
+    return new Positioned(
+      top: 0,
+      bottom: 0,
+      left: 32,
+      child: new Container(
+        width: 1.0,
+        color: Colors.grey[300],
+      ),
     );
   }
 }
