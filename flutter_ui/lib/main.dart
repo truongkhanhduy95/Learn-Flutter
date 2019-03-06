@@ -32,7 +32,8 @@ class _MainPageState extends State<MainPage> {
         children: <Widget>[
           _buildImage(),
           _buildHeader(),
-          _buildProfileRow()
+          _buildProfileRow(),
+          _buildBottomPart(),
         ],
       ),
     );
@@ -113,6 +114,42 @@ class _MainPageState extends State<MainPage> {
           )
         ]
       ),
+    );
+  }
+
+  Widget _buildBottomPart() {
+    return new Padding(
+      padding: new EdgeInsets.only(top:_imageHeight),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildMyTasksHeader(),
+          _buildMyTasksList()
+        ],
+      )
+    );
+  }
+
+  Widget _buildMyTasksList() {
+    return new Container();
+  }
+
+  Widget _buildMyTasksHeader() {
+    return new Padding(
+      padding: new EdgeInsets.only(left:  64),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Text(
+            'My Tasks',
+            style: new TextStyle(fontSize: 34),
+          ),
+          new Text(
+            'FEBRUARY 8, 2019',
+            style: new TextStyle(color: Colors.grey, fontSize: 12),
+          )
+        ],
+      )
     );
   }
 }
