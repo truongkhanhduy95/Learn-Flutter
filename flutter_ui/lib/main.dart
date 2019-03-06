@@ -31,7 +31,8 @@ class _MainPageState extends State<MainPage> {
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
-          _buildImage()
+          _buildImage(),
+          _buildHeader()
         ],
       ),
     );
@@ -49,7 +50,33 @@ class _MainPageState extends State<MainPage> {
       )
     );
   }
+
+  Widget _buildHeader() {
+    return new Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 32),
+      child: new Row(
+        children: <Widget>[
+          new Icon(Icons.menu, size: 32, color: Colors.white),
+          new Expanded(
+            child: new Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: new Text(
+                'Timeline',
+                style: new TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300
+                ),
+              ),
+            ),
+          ),
+          new Icon(Icons.linear_scale, color: Colors.white),
+        ],
+      ),
+    );
+  }
 }
+
 class DialongonalClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
