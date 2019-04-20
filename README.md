@@ -2,3 +2,4 @@
 
 # Apps
 - Flutter UI
+- Frienly Chat
