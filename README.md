@@ -6,4 +6,4 @@
 - My App
 - Shrine
 - Task List
-- 
+- Skeleton App
